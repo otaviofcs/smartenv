@@ -27,4 +27,11 @@ func TestEnvWithDefault(t *testing.T) {
       t.Errorf("Should return env value 'my env'. Got: %s", random_env)
     }
   })
+  t.Run("Check get env without default", func(t *testing.T) {
+    os.Setenv("RANDOM_ENV", "my env")
+    random_env := Env("RANDOM_ENV")
+    if random_env != "my env" {
+      t.Errorf("Should return an env var with 'my env'. Got: %s", random_env)
+    }
+  })
 }
